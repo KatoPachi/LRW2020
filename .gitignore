@@ -1,0 +1,17 @@
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.xdv
+*.pptx
+*.fls
+*.fdb_latexmk
+*.dvi
+*.nav
+*.snm
+ignore file.txt
+sample.png

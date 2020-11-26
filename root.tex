@@ -1,0 +1,175 @@
+\documentclass[12pt, a4paper, titlepage]{report}
+
+%--------------- preamble for LuaLatex -----------%
+
+\iffalse
+\usepackage{luatexja}
+\usepackage[ipaex]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\mcdefault}
+\setmainfont{Times New Roman}
+\newfontfamily\engsf[Ligatures=TeX,Scale=0.92]{Arial}
+\def\en#1{{\engsf#1}} % 欧文フォントで出力
+\fi
+
+%-------------------------------------------------%
+
+%--------------- preamble for XeLatex ------------%
+
+\iftrue
+\usepackage{fontspec}
+\usepackage{xltxtra} % \XeTeX ロゴのために必要
+\setmainfont{Times New Roman}
+\newfontfamily\engsf[Ligatures=TeX,Scale=0.92]{Arial}
+\def\en#1{{\engsf#1}} % 欧文フォントで出力
+
+\usepackage{zxjatype}
+\setCJKmainfont[Scale=0.92, BoldFont = IPAゴシック]{IPA明朝}
+\setCJKsansfont[Scale=0.92]{IPAゴシック}
+\setCJKmonofont{IPAゴシック}
+
+\XeTeXlinebreaklocale "ja"
+\XeTeXlinebreakskip=0pt plus 1pt
+\XeTeXlinebreakpenalty=0
+\fi
+
+%----------------------------------------------%
+%--------------- general preamble ----------------%
+
+% Mathematical Expression
+\usepackage{bm} % bold style
+\usepackage{amsmath} % use begin{align} environment
+\usepackage{amssymb} % required for \mathcal and \mathbb
+\usepackage{theorem} % environment for theorem
+
+% Font
+\usepackage{color} % required for `\textcolor{color}{text}'; \textbf{\textcolor{red}{Work on from HERE! }}
+\usepackage{url}  % URL font
+
+%% Bibliography
+%\usepackage{harvard}
+\usepackage{natbib}
+
+\def\biblio{\bibliographystyle{aer}\bibliography{../reference.bib}}
+
+% Page Layout (duplicate and delete soon)
+\iffalse
+\usepackage{fullpage}
+\RequirePackage[scale=0.8]{geometry}
+\RequirePackage{indentfirst}
+\RequirePackage{setspace}
+\setstretch{1.3}
+\parindent=1em
+\fi
+
+% Page Layout 
+\iftrue
+\usepackage[scale=0.8]{geometry}
+\usepackage{setspace}
+\setstretch{1.3}
+\parindent=1em
+\fi
+
+% Figure and table
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{wrapfig}  % include graphics into text
+\usepackage{ascmac} % frame for table
+\usepackage{hhline} % make line in table clean and beautiful
+\usepackage{adjustbox}
+
+% Itemization
+\usepackage{enumitem}
+
+% Subfiles
+\usepackage{subfiles}
+
+% Additional File
+\usepackage{siunitx}
+\usepackage{here}
+
+% fancy chapter
+\usepackage[Bjornstrup]{fncychap}
+
+% Summary Environment
+\newcommand{\startline}{\begin{center}\rule{0.4\linewidth}{1.5pt}\quad\textbf{Abstract}\quad\rule{0.4\linewidth}{1.5pt}\end{center}}
+\newcommand{\finishline}{\begin{center}\rule{0.95\linewidth}{1.5pt}\end{center}}
+\newcommand{\authoryear}[1]{\textbf{Author-year}\quad\citet{#1}}
+\newcommand{\RQ}[1]{\textbf{Research Question}\quad#1}
+\newcommand{\answer}[1]{\textbf{How to Answer RQ}\quad#1}
+\newcommand{\result}[1]{\textbf{Results}\quad#1}
+
+\newenvironment{shortsummary}{\startline}{\finishline}
+
+\def\qed{\hfill $\blacksquare$} % \qed: make black box on the right hand side
+\def\argmax{\mathrm{arg} \max} % \argmax
+\def\argmin{\mathrm{arg} \min} % \argmin
+\newcommand{\fpartial}[3][\partial]{\frac{#1 #2}{#1 #3}} % make easily first derivative notation
+\newcommand{\spartial}[4][\partial]{\frac{#1 #2}{#1 #3 #1 #4}}
+
+\newcommand{\dlinecell}[1]{\begin{tabular}{@{}c@{}} #1 \end{tabular}}
+
+\renewcommand{\arraystretch}{1.5} %表の行幅を1.5倍に設定する
+
+\makeatletter
+\def\Hline{
+\noalign{\ifnum0=`}\fi\hrule \@height 2pt \futurelet
+\reserved@a\@xhline}
+\makeatother                       % \Hline: horizontal line is thick
+
+%----------------------------------------------%
+
+\title{Literature Review Workshop in 2020}
+\author{Hiroki Kato \and Reio Tanji \and Takuma Sugiyama}
+
+\setcounter{tocdepth}{0}
+
+\begin{document}
+    \def\biblio{}
+
+    \maketitle
+
+    \chapter*{Contributions}
+
+    このレポートは2020年に開催されたLiterature Review Workshopで扱った論文のサマリーシートをまとめたものである．各チャプターの執筆者は以下のとおりである．
+    \begin{itemize}
+        \item Hiroki Kato: Chapter 1, 4, 8, 12, 15
+        \item Reio Tanji: Chapter 2, 7, 10, 14
+        \item Takuma Sugiyama: Chapter 3, 6, 9, 13
+    \end{itemize}
+    また，このレポートの一部のチャプターは，執筆者3名が大竹・佐々木ゼミで報告されたものを含めている．
+    執筆者がゼミで報告したチャプターは以下の通りである．
+    \begin{itemize}
+        \item Hiroki Kato: Chapter 5
+        \item Reio Tanji, Chapter 11
+    \end{itemize}
+
+
+    \clearpage
+
+    \tableofcontents
+    \clearpage
+
+    %\subfile{body/template.tex}
+    \subfile{0515kato/0515kato.tex}
+    \subfile{0522tanji/0522tanji.tex}
+    \subfile{0529sugiyama/0529sugiyama.tex}
+    \subfile{0605kato/0605kato.tex}
+    \subfile{os0602kato/os0602kato.tex}
+    \subfile{0612suiyama/0612sugiyama.tex}
+    \subfile{0619tanji/0619tanji.tex}
+    \subfile{0626kato/0626kato.tex}
+    \subfile{0703sugiyama/0703sugiyama.tex}
+    \subfile{0710tanji/0710tanji.tex}
+    \subfile{os0707tanji/os0707tanji.tex}
+    \subfile{0717kato/0717kato.tex}
+    \subfile{0731sugiyama/0731sugiyama.tex}
+    \subfile{0807tanji/0807tanji.tex}
+    \subfile{0821kato/0821kato1.tex}
+    \subfile{0828sugiyama/0828sugiyama.tex}
+    \subfile{0904tanji/0904tanji.tex}
+    \subfile{0911kato/0911kato.tex}
+
+    \bibliographystyle{aer}
+    \bibliography{reference.bib}
+
+\end{document}
